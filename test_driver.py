@@ -33,31 +33,22 @@ def test_parser(input_string):  # invokes your parser to get a tree!
     return parse_tree
 
 lexxed = test_lexer(instring)
-print (lexxed)
+#print (lexxed)
 
 parsed = test_parser(instring)
-print (parsed)
+#print (parsed)
 
 # Try to open and read Matlab code
 infile = fname
 outfile = 'convertDn2RadAll.py'
 
-try:
-    rea = open(infile,'r')
-    wri = open(outfile,'w')
-except IOError as e:
-    print ("I/O error({0}): {1}".format(e.errno, e.strerror))
-except:
-    print ('Unexpected error:', sys.exc_info()[0])
-    raise
-
-instring = rea.read()
+with open(infile, 'r') as rea:
+    instring = rea.read()
 
 output_text = interp.rewrite(instring)
+#print(output_text)
 
 # Write all of the text to a text file
-wri.write(output_text)
-
-# Close the files
-rea.close()
-wri.close()
+with open(outfile,'w') as wri:
+    wri.write(output_text)
+    print('Parsed MATLAB file successfully written to: ' + outfile)

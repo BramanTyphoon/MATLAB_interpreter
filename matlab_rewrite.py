@@ -280,7 +280,7 @@ def interpret_stmt (stmt, tabs, env):
             if clause[0] == 'case':
                 out += ('elif ' + casevar + ' == ' + \
                         interpret_exp(clause[1],env) + ':\n')
-                out += interpret_stmt(case[2],tabs+1,env)
+                out += interpret_stmt(case1[2],tabs+1,env)
             elif clause[0] == 'otherwise':
                 out += ('else:' + '\n')
                 out += interpret_stmt(clause[2],tabs+1,env)
@@ -686,9 +686,9 @@ for i = 1 : length(list)
     clear name2 image;
 end"""
 
-print('Results of test 1 (Basic file and command flow operations):')
-test_output = rewrite(input1)
-print(test_output)
-print('\n')
+#print('Results of test 1 (Basic file and command flow operations):')
+#test_output = rewrite(input1)
+#print(test_output)
+#print('\n')
 
 

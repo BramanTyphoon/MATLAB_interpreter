@@ -49,4 +49,4 @@ for i = 1 : length(list)
     image = wvDN2Rad(image);
     save (fullfile(outpath,name2),'image');
     clear name2 image;
-end"""
+end
