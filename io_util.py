@@ -35,17 +35,4 @@ def Walk( root, recurse=0, pattern='*', return_folders=0 ):
 			
 	return result
 
-if __name__ == '__main__':
-	# test code
-	print '\nExample 1:'
-	files = Walk('.', 1, '*', 1)
-	print 'There are %s files below current location:' % len(files)
-	for file in files:
-		print file
-
-	print '\nExample 2:'
-	files = Walk('.', 1, '*.py;*.html')
-	print 'There are %s files below current location:' % len(files)
-	for file in files:
-		print file
 ## end of http://code.activestate.com/recipes/52664/ }}}

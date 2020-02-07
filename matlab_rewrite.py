@@ -19,7 +19,7 @@ import time
 
 
 # Define directories containing all matlab functions
-userfuns = 'E:\\\\documents\\\\matlab\\\\'
+userfuns = ''
 matfuns = 'C:\\\\Program Files\\\\MATLAB\\\\R2011a\\\\toolbox\\\\'
 
 # Build lexer and parser from predefined rules
@@ -55,8 +55,8 @@ binops = {
 
 # Dictionary containing function equivalencies
 fun_trans = {
-    'max' : 'special',
-    'min' : 'special',
+    'max' : 'np.amax',
+    'min' : 'np.amin',
     'size' : 'special',
     'double' : 'float',
     'length' : 'len',
@@ -123,7 +123,8 @@ def rewrite(instring):
     # Add names of modules that need to be added manually
     import_text = '### Modules to be imported ###\n' + \
                   'import os \nfrom numpy import \*\n' + \
-                  'import scipy as Sci\nimport scipy.linalg\nimport os\n'
+                  'import scipy as Sci\nimport scipy.linalg\nimport os\n' + \
+                  'import numpy as np\n'
     for fun in fun_to_import:
         import_text += '#\t' + fun + ': ' + str(fun_to_import[fun]) + '\n'
     output_text = import_text + '\n\n\n' + output_text
@@ -685,9 +686,9 @@ for i = 1 : length(list)
     clear name2 image;
 end"""
 
-print 'Results of test 1 (Basic file and command flow operations):'
+print('Results of test 1 (Basic file and command flow operations):')
 test_output = rewrite(input1)
-print test_output
-print '\n'
+print(test_output)
+print('\n')
 
 

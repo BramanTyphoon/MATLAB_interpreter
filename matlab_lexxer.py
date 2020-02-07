@@ -331,7 +331,7 @@ def t_newline(t):
 
 # Skip errors and report to user
 def t_error(t):
-        print "Matlab Lexer: Illegal character " + t.value[0]
+        print("Matlab Lexer: Illegal character " + t.value[0])
         t.lexer.skip(1)
 
 # Code for test cases and general testing

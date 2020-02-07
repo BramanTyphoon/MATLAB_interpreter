@@ -2,16 +2,17 @@
 import matlab_lexxer as mat
 import matlab_parser as par
 import matlab_rewrite as interp
+import sys
 
 # Pulls out the lexer and parser
 matter = mat.lexer
 patter = par.parser
 
 # Define varables for opening and processing matlab files
-fname = 'E:\\documents\\matlab\\convertDn2RadAll.m'
+fname = 'convertDn2RadAll.m'
 
-fil = open(fname,'r')
-instring = fil.read()
+with open(fname,'r') as fil:
+    instring = fil.read()
 #print instring
 #print '\n'
 
@@ -32,22 +33,22 @@ def test_parser(input_string):  # invokes your parser to get a tree!
     return parse_tree
 
 lexxed = test_lexer(instring)
-print lexxed
+print (lexxed)
 
 parsed = test_parser(instring)
-print parsed
+print (parsed)
 
 # Try to open and read Matlab code
 infile = fname
-outfile = 'E:\\documents\\matlab\\convertDn2RadAll.py'
+outfile = 'convertDn2RadAll.py'
 
 try:
     rea = open(infile,'r')
     wri = open(outfile,'w')
 except IOError as e:
-    print "I/O error({0}): {1}".format(e.errno, e.strerror)
+    print ("I/O error({0}): {1}".format(e.errno, e.strerror))
 except:
-    print 'Unexpected error:', sys.exc_info()[0]
+    print ('Unexpected error:', sys.exc_info()[0])
     raise
 
 instring = rea.read()
